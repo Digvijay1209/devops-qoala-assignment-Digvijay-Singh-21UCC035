@@ -6,7 +6,7 @@ import netifaces as ni
 app = Flask(__name__)
 
 def get_mac_address():
-    # Function to get the MAC address of the host
+  
     for iface in ni.interfaces():
         try:
             mac = ni.ifaddresses(iface)[ni.AF_LINK][0]['addr']
@@ -18,19 +18,17 @@ def get_mac_address():
 
 @app.route('/')
 def user_info():
-    # Get user IP
+
     user_ip = request.remote_addr
     
-    # Get system username (from environment)
-    username = request.headers.get('Username', 'Guest')
-    
-    # Get MAC address
+   
+    username = request.headers.get('Username', 'Digvijay Singh-21UCC035')
+ 
     mac_address = get_mac_address()
     
-    # Get current timestamp
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    # Display all details
+ 
     return f"""
     <html>
     <body>
